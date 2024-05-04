@@ -8,7 +8,7 @@ import { Observable, map } from 'rxjs';
 })
 export class NewsService {
   private apiKey: string = 'f16ccf196a87435a8f58d6f01b7780e4  ';
-  private baseUrl: string = 'http://newsapi.org/v2/everything';
+  private baseUrl: string = 'https://newsapi.org/v2/everything';
 
   constructor(private http: HttpClient) {}
 
