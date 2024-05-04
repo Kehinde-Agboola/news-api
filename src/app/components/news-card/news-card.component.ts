@@ -7,6 +7,7 @@ import { Article } from 'src/app/modals/articule.modal';
   styleUrls: ['./news-card.component.scss'],
 })
 export class NewsCardComponent implements OnInit, OnDestroy {
+  isLoading: boolean = false;
   searchTerm: string = '';
   currentPage: number = 1;
   pageSize: number = 10;
@@ -26,9 +27,13 @@ export class NewsCardComponent implements OnInit, OnDestroy {
   }
 
   loadArticles() {
+    this.isLoading = true;
     this.newsService
       .getNewsArticles(this.searchTerm, this.currentPage, this.pageSize)
-      .subscribe((articles) => (this.articles = articles));
+      .subscribe((articles: Article[]) => {
+        this.articles = articles;
+        this.isLoading = false;
+      });
   }
 
   onPageChange(pageNumber: number) {

@@ -7,7 +7,7 @@ import { Observable, map } from 'rxjs';
   providedIn: 'root',
 })
 export class NewsService {
-  private apiKey: string = 'f16ccf196a87435a8f58d6f01b7780e4';
+  private apiKey: string = 'f16ccf196a87435a8f58d6f01b7780e4  ';
   private baseUrl: string = 'http://newsapi.org/v2/everything';
 
   constructor(private http: HttpClient) {}
@@ -23,8 +23,8 @@ export class NewsService {
     }
 
     let params = new HttpParams()
-      .set('q', searchTerm)
       .set('apiKey', this.apiKey)
+      .set('q', searchTerm)
       .set('pageSize', pageSize.toString())
       .set('page', page.toString());
 
