@@ -30,10 +30,16 @@ export class NewsCardComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.newsService
       .getNewsArticles(this.searchTerm, this.currentPage, this.pageSize)
-      .subscribe((articles: Article[]) => {
-        this.articles = articles;
-        this.isLoading = false;
-      });
+      .subscribe(
+        (articles: Article[]) => {
+          this.articles = articles;
+          this.isLoading = false;
+        },
+        (error) => {
+          console.log('Error loading more articules', error);
+          this.isLoading = false;
+        }
+      );
   }
 
   onPageChange(pageNumber: number) {
