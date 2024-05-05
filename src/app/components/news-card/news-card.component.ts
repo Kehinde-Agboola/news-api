@@ -12,6 +12,7 @@ export class NewsCardComponent implements OnInit, OnDestroy {
   currentPage: number = 1;
   pageSize: number = 10;
   articles: Article[] = [];
+  Error: string = '';
 
   constructor(private newsService: NewsService) {}
 
@@ -36,7 +37,7 @@ export class NewsCardComponent implements OnInit, OnDestroy {
           this.isLoading = false;
         },
         (error) => {
-          console.log('Error loading more articules', error);
+          (this.Error = 'Error loading more articules'), error;
           this.isLoading = false;
         }
       );
